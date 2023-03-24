@@ -48,6 +48,18 @@ class PolyTreeNode
     end
 
     def bfs(target)
-        
+        return self if self.value == target
+        line = self.children
+        until line.empty?
+            line.each do |child|
+                removed_child = line.pop
+                if removed_child.value == target
+                    return removed_child
+                else
+                    line << removed_child.children
+                end
+            end
+        end
+        nil
     end 
 end
