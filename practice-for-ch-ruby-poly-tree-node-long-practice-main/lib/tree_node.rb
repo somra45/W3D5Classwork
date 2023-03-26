@@ -37,10 +37,9 @@ class PolyTreeNode
         return self if self.value == target
 
         self.children.each do |child|
-            
             result = child.dfs(target)
             if result != nil
-                return child  
+                return result
             end
         end
 
@@ -52,11 +51,11 @@ class PolyTreeNode
         line = self.children
         until line.empty?
             line.each do |child|
-                removed_child = line.pop
+                removed_child = line.shift
                 if removed_child.value == target
                     return removed_child
                 else
-                    line << removed_child.children
+                    line += removed_child.children
                 end
             end
         end
