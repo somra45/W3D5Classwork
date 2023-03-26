@@ -50,13 +50,11 @@ class PolyTreeNode
         return self if self.value == target
         line = self.children
         until line.empty?
-            line.each do |child|
-                removed_child = line.shift
-                if removed_child.value == target
-                    return removed_child
-                else
-                    line += removed_child.children
-                end
+            removed_child = line.shift
+            if removed_child.value == target
+                return removed_child
+            else
+                line += removed_child.children
             end
         end
         nil
